@@ -1,4 +1,4 @@
-package com.example.taskmaster;
+package com.shingo.taskmaster;
 
 import androidx.appcompat.app.AppCompatActivity;
 
@@ -8,10 +8,11 @@ import android.util.Log;
 import android.view.View;
 import android.widget.Button;
 
+
 public class MainActivity extends AppCompatActivity {
 
 
-    static String TAG = "example.main";
+    static String TAG = "shingo.main";
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
