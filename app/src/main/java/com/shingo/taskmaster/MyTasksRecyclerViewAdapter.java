@@ -41,7 +41,7 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
         holder.mItem = mValues.get(position);
         holder.mTitleView.setText(mValues.get(position).getTitle());
         holder.mBodyView.setText(mValues.get(position).getBody());
-
+        holder.mStateView.setText(mValues.get(position).getState());
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -59,6 +59,7 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
         public final View mView;
         public final TextView mTitleView;
         public final TextView mBodyView;
+        public final TextView mStateView;
         public Tasks mItem;
 
         public ViewHolder(View view) {
@@ -66,6 +67,7 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
             mView = view;
             mTitleView = (TextView) view.findViewById(R.id.title);
             mBodyView = (TextView) view.findViewById(R.id.body);
+            mStateView = (TextView) view.findViewById(R.id.state);
         }
 
         @Override
