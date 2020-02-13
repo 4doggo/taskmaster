@@ -1,4 +1,4 @@
-package com.example.taskmaster;
+package com.shingo.taskmaster;
 
 import android.content.Context;
 import androidx.test.platform.app.InstrumentationRegistry;
