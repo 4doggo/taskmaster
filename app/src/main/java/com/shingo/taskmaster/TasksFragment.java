@@ -74,6 +74,17 @@ public class TasksFragment extends Fragment {
             }
             List<Tasks> listOfTasks = new ArrayList<>();
             listOfTasks.add(new Tasks("Wash dishes","Making sure to be careful with the plates","not done"));
+            listOfTasks.add(new Tasks("clean room","use broom","not done"));
+            listOfTasks.add(new Tasks("Study DSA","Go on leetcode and start doing stuff","not done"));
+            listOfTasks.add(new Tasks("Drinking lots of water","stay hydrated","not done"));
+            listOfTasks.add(new Tasks("Wash dishes","Making sure to be careful with the plates","not done"));
+            listOfTasks.add(new Tasks("clean room","use broom","not done"));
+            listOfTasks.add(new Tasks("Study DSA","Go on leetcode and start doing stuff","not done"));
+            listOfTasks.add(new Tasks("Drinking lots of water","stay hydrated","not done"));
+            listOfTasks.add(new Tasks("Wash dishes","Making sure to be careful with the plates","not done"));
+            listOfTasks.add(new Tasks("clean room","use broom","not done"));
+            listOfTasks.add(new Tasks("Study DSA","Go on leetcode and start doing stuff","not done"));
+            listOfTasks.add(new Tasks("Drinking lots of water","stay hydrated","not done"));
             recyclerView.setAdapter(new MyTasksRecyclerViewAdapter(listOfTasks, null));
         }
         return view;
