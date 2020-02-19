@@ -2,6 +2,7 @@ package com.shingo.taskmaster;
 
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -42,10 +43,15 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
         holder.mTitleView.setText(mValues.get(position).getTitle());
         holder.mBodyView.setText(mValues.get(position).getBody());
         holder.mStateView.setText(mValues.get(position).getState());
+
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-              Log.i(TAG, "it was clicked");
+              Intent i = new Intent(v.getContext(),TaskDetail.class);
+              i.putExtra("title",holder.mTitleView.getText());
+              i.putExtra("state",holder.mStateView.getText());
+              i.putExtra("body",holder.mBodyView.getText());
+              v.getContext().startActivity(i);
             }
         });
     }
