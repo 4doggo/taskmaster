@@ -31,6 +31,7 @@ public class TasksFragment extends Fragment {
     // TODO: Customize parameters
     private int mColumnCount = 1;
     private OnListFragmentInteractionListener mListener;
+    private RecyclerView recyclerView;
 
     /**
      * Mandatory empty constructor for the fragment manager to instantiate the
@@ -88,6 +89,14 @@ public class TasksFragment extends Fragment {
             recyclerView.setAdapter(new MyTasksRecyclerViewAdapter(listOfTasks, null));
         }
         return view;
+    }
+
+    @Override
+    public void onResume(){
+        super.onResume();
+        List<Tasks>listOfTasks = dao.getAll();
+        recyclerView.setAdapter(new MyTasksRecyclerViewAdapter(listOfTasks),null));
+
     }
 
 
