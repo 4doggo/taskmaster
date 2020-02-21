@@ -9,6 +9,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.amazonaws.amplify.generated.graphql.ListTaskmastersQuery;
 import com.shingo.taskmaster.TasksFragment.OnListFragmentInteractionListener;
 import com.shingo.taskmaster.dummy.DummyContent.DummyItem;
 
@@ -22,10 +23,10 @@ import java.util.List;
 public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecyclerViewAdapter.ViewHolder> {
 
     static final String TAG = "shingo.ViewAdapter";
-    private final List<Tasks> mValues;
+    private List<ListTaskmastersQuery.Item> mValues;
     private final OnListFragmentInteractionListener mListener;
 
-    public MyTasksRecyclerViewAdapter(List<Tasks> items, OnListFragmentInteractionListener listener) {
+    public MyTasksRecyclerViewAdapter(List<ListTaskmastersQuery.Item> items, OnListFragmentInteractionListener listener) {
         mValues = items;
         mListener = listener;
     }
@@ -40,9 +41,9 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
     @Override
     public void onBindViewHolder(final ViewHolder holder, int position) {
         holder.mItem = mValues.get(position);
-        holder.mTitleView.setText(mValues.get(position).getTitle());
-        holder.mBodyView.setText(mValues.get(position).getBody());
-        holder.mStateView.setText(mValues.get(position).getState());
+        holder.mTitleView.setText(mValues.get(position).title());
+        holder.mBodyView.setText(mValues.get(position).description());
+//        holder.mStateView.setText(mValues.get(position).
 
         holder.mView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -56,6 +57,10 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
         });
     }
 
+    public void setItems(List<ListTaskmastersQuery.Item> items){
+        this.mValues = items;
+    }
+
     @Override
     public int getItemCount() {
         return mValues.size();
@@ -66,7 +71,7 @@ public class MyTasksRecyclerViewAdapter extends RecyclerView.Adapter<MyTasksRecy
         public final TextView mTitleView;
         public final TextView mBodyView;
         public final TextView mStateView;
-        public Tasks mItem;
+        public ListTaskmastersQuery.Item mItem;
 
         public ViewHolder(View view) {
             super(view);
