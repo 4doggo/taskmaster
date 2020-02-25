@@ -106,38 +106,38 @@ public class TasksFragment extends Fragment  {
         return view;
     }
 
-    @Override
-    public void onResume(){
-        super.onResume();
-
-        mAWSAppSyncClient.query(ListTaskmastersQuery.builder().build())
-                .responseFetcher(AppSyncResponseFetchers.NETWORK_FIRST)
-                .enqueue(new GraphQLCall.Callback<ListTaskmastersQuery.Data>(){
-
-                    @Override
-                    public void onResponse(@Nonnull final com.apollographql.apollo.api.Response<ListTaskmastersQuery.Data> response) {
-                        Log.i(TAG, response.data().listTaskmasters().items().toString());
-                        Handler h = new Handler(Looper.getMainLooper()){
-                            @Override
-                            public void handleMessage(Message inputMessage) {
-                                if (adapter == null) {
-                                    adapter = new MyTasksRecyclerViewAdapter(null, mListener);
-                                    recyclerView.setAdapter(adapter);
-                                }
-                                adapter.setItems(response.data().listTaskmasters().items());
-                                adapter.notifyDataSetChanged();
-                            }
-                        };
-                        h.obtainMessage().sendToTarget();
-                    }
-
-                    @Override
-                    public void onFailure(@Nonnull ApolloException e){
-                        Log.e(TAG,e.getMessage());
-
-                    }
-                });
-    }
+//    @Override
+//    public void onResume(){
+//        super.onResume();
+//
+//        mAWSAppSyncClient.query(ListTaskmastersQuery.builder().build())
+//                .responseFetcher(AppSyncResponseFetchers.NETWORK_FIRST)
+//                .enqueue(new GraphQLCall.Callback<ListTaskmastersQuery.Data>(){
+//
+//                    @Override
+//                    public void onResponse(@Nonnull final com.apollographql.apollo.api.Response<ListTaskmastersQuery.Data> response) {
+//                        Log.i(TAG, response.data().listTaskmasters().items().toString());
+//                        Handler h = new Handler(Looper.getMainLooper()){
+//                            @Override
+//                            public void handleMessage(Message inputMessage) {
+//                                if (adapter == null) {
+//                                    adapter = new MyTasksRecyclerViewAdapter(null, mListener);
+//                                    recyclerView.setAdapter(adapter);
+//                                }
+//                                adapter.setItems(response.data().listTaskmasters().items());
+//                                adapter.notifyDataSetChanged();
+//                            }
+//                        };
+//                        h.obtainMessage().sendToTarget();
+//                    }
+//
+//                    @Override
+//                    public void onFailure(@Nonnull ApolloException e){
+//                        Log.e(TAG,e.getMessage());
+//
+//                    }
+//                });
+//    }
 
 
     @Override
